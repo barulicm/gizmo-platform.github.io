@@ -1,6 +1,5 @@
 # Setup
 
-
 While no specific editor or tools are _required_ for using Circuit Python, this documentation will make use of the recommended tools, namely the Mu editor and CircUp library management tools.
 
 ## Installing the Circuit Python Runtime
@@ -16,6 +15,8 @@ In order for your microcontroller to be able to use Circuit Python, you have to 
 1. Copy the .uf2 file you downloaded to the "RPI-RP2" drive.
 
    Your device will automatically reboot and reconnect as a new drive called "CIRCUITPY".
+
+If your Gizmo ever gets stuck in a way that prevents you from saving new Circuit Python code to it or if it stops showing up as the CIRCUITPY drive when you connect it, you may need to re-install the runtime by following the above steps again.
 
 ## Installing the Mu Editor
 
@@ -46,11 +47,11 @@ To install the Gizmo Circuit Python library with the CircUp tool, run these comm
 1. Add the bundle to your local list.
 
     ```Shell
-    circup bundle-add gizmo-platform/CircuitPython_Gizmo
+    $ circup bundle-add gizmo-platform/CircuitPython_Gizmo
     ```
 
 1. Install the module to your connected device.
 
     ```Shell
-    circup install circuitpython_gizmo
+    $ circup install circuitpython_gizmo
     ```
