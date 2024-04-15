@@ -1,16 +1,28 @@
 # The Circuit Python Gizmo Module
 
-In this tutorial, we will introduce the `circuitpython_gizmo` module and the `print` function. You will learn how to get input from your gamepad and how to send text back to your computer to help debug your code.
+In this tutorial, we will introduce the `circuitpython_gizmo` module and
+the `print` function. You will learn how to get input from your gamepad
+and how to send text back to your computer to help debug your code.
 
 ## The print Function
 
-While your Circuit Python programs are running while your Gizmo is connected to a computer, they are able to send information back to your computer. The messages your Gizmo sends will show up in the "serial" viewer in the Mu editor. Your code sends these messages by calling the `print` function.
+While your Circuit Python programs are running while your Gizmo is
+connected to a computer, they are able to send information back to your
+computer. The messages your Gizmo sends will show up in the "serial"
+viewer in the Mu editor. Your code sends these messages by calling the
+`print` function.
 
 > [!NOTE]
 >
-> "Serial" is a generic term that refers to several different low-level communication protocols used in electronics. Often this refers to [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter) used to communicate between microcontrollers. For our purposes here, the USB connection is emulating a simple "serial" communication protocol.
+> "Serial" is a generic term that refers to several different low-level
+communication protocols used in electronics. Often this refers to
+[UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
+used to communicate between microcontrollers. For our purposes here, the
+USB connection is emulating a simple "serial" communication protocol.
 
-To use the `print` function, give it the message you want to send. This can be text, numbers, or variables. The `print` function is always available, so you don't have to import any modules to use it.
+To use the `print` function, give it the message you want to send. This
+can be text, numbers, or variables. The `print` function is always
+available, so you don't have to import any modules to use it.
 
 ```Python
 # Sending text
@@ -21,7 +33,9 @@ value = 100
 print(value)
 ```
 
-You can also embed variables into text messages to give more context. Just put an 'f' in front of your message and wrap the variable names in curly brackets. For example:
+You can also embed variables into text messages to give more context. Just
+put an 'f' in front of your message and wrap the variable names in curly
+brackets. For example:
 
 ```Python
 count = 2
@@ -31,7 +45,9 @@ print(f"The count is {count}.")
 
 ## The circuitpython_gizmo Module
 
-The `circuitpython_gizmo` module gives access to the unique features of the Gizmo. This includes pin name constants and gamepad values. This is all done with the `Gizmo` class.
+The `circuitpython_gizmo` module gives access to the unique features of
+the Gizmo. This includes pin name constants and gamepad values. This is
+all done with the `Gizmo` class.
 
 ```Python
 import circuitpython_gizmo
@@ -40,7 +56,9 @@ import circuitpython_gizmo
 gizmo = circuitpython_gizmo.Gizmo()
 ```
 
-The `Gizmo` class has several useful variables and functions. Firstly, it features a number of useful constants for referencing the ports on the Gizmo.
+The `Gizmo` class has several useful variables and functions. Firstly, it
+features a number of useful constants for referencing the ports on the
+Gizmo.
 
 - `gizmo.MOTOR_N` - the nth motor port (1 - 8)
 - `gizmo.GPIO_N` - the nth gpio port (1 - 8)
@@ -74,7 +92,9 @@ There are twelve buttons available:
 - `gizmo.buttons.left_stick` - Left joystick stalk
 - `gizmo.buttons.right_stick` - Right joystick stalk
 
-Finally, the `refresh` function must be called at regular intervals to get the latest information from the system processor. This is usually done towards the start of your program's infinite while loop.
+Finally, the `refresh` function must be called at regular intervals to get
+the latest information from the system processor. This is usually done
+towards the start of your program's infinite while loop.
 
 ```Python
 while True:
@@ -83,7 +103,8 @@ while True:
 
 ## Logging Gamepad State
 
-Let's put everything we've introduced here together in a simple program that counts how many times a button on our gamepad is pressed.
+Let's put everything we've introduced here together in a simple program
+that counts how many times a button on our gamepad is pressed.
 
 First, import the Circuit Python Gizmo module.
 
@@ -91,21 +112,25 @@ First, import the Circuit Python Gizmo module.
 import circuitpython_gizmo
 ```
 
-Then, create a `Gizmo` object and a counter variable. We will use the `count` variable to keep track of how many times the button has been pressed.
+Then, create a `Gizmo` object and a counter variable. We will use the
+`count` variable to keep track of how many times the button has been
+pressed.
 
 ```Python
 gizmo = circuitpython_gizmo.Gizmo()
 count = 0
 ```
 
-Next, in a while loop, refresh the `Gizmo` object to get the latest information.
+Next, in a while loop, refresh the `Gizmo` object to get the latest
+information.
 
 ```Python
 while True:
   gizmo.refresh()
 ```
 
-Still in the loop, check if the A button has been pressed. If it has, add 1 to the count and print it.
+Still in the loop, check if the A button has been pressed. If it has, add
+1 to the count and print it.
 
 ```Python
   if gizmo.buttons.a:
@@ -128,8 +153,11 @@ while True:
     print(f"The button has been pressed {count} times.")
 ```
 
-To run this program, make sure your Gizmo battery is plugged in and the Gizmo is connected to your driver station.
+To run this program, make sure your Gizmo battery is plugged in and the
+Gizmo is connected to your driver station.
 
 ## Recap
 
-In this tutorial, we've introduced the `circuitpython_gizmo` module and the `print` function. With these new tools, we wrote a program that counts button presses on your gamepad.
+In this tutorial, we've introduced the `circuitpython_gizmo` module and
+the `print` function. With these new tools, we wrote a program that counts
+button presses on your gamepad.
