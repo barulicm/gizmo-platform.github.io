@@ -12,8 +12,8 @@ process even easier.
 
 Documentation for the Circuit Python language and core libraries are
 available at
-[https://docs.circuitpython.org/](https://docs.circuitpython.org/).
+<https://docs.circuitpython.org/>.
 
 Adafruit provides excellent, beginner-focussed documentation on how to use
 Circuit Python at
-[https://learn.adafruit.com/welcome-to-circuitpython](https://learn.adafruit.com/welcome-to-circuitpython).
+<https://learn.adafruit.com/welcome-to-circuitpython>.

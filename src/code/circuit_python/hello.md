@@ -1,11 +1,27 @@
 # Hello World
 
-Let's begin writing some simple Circuit Python code for your Gizmo. This
-code won't require any extra hardware plugged into your Gizmo. You will
-only need the Gizmo itself and the USB programming cable.
+Let's begin writing some simple Circuit Python code for your Gizmo. A
+common beginner program when working with microcontrollers is blinking an
+LED. Conveniently, the Gizmo's student processor has an LED built in to
+it. This lesson will introduce some of the most common Circuit Python
+modules and will walk you through creating a program that blinks the built
+in LED. This code won't require any extra hardware plugged into your
+Gizmo. You will only need the Gizmo itself and the USB programming cable.
 
 Connect the USB programming cable to the student processor on your Gizmo
 and plug it into the computer.
+
+## What is a module?
+
+When writing any kind of software, it is helpful to reuse code that other people have written. They've already put in the work to make sure it works correctly! A "library" is collection of helpful code that is shared between projects. In Python, every library is made up of one or more "modules." A module is a single file of Python code that defines useful objects or functions for other Python files to use.
+
+In order to use the tools a module provides, we have to import it into our script. This is done with an "import statement". These are usually at the top of a Python script and look like this:
+
+```Python
+import module_name
+```
+
+You can learn more about the details of Python modules [here](https://docs.python.org/3/tutorial/modules.html). For now, the important thing to understand is that we use `import` to pull in useful code from another file.
 
 ## The board Module
 
@@ -15,7 +31,7 @@ module are specific to the device running the code.
 
 For this tutorial, we'll be using the `board.LED` pin constant. This "pin"
 isn't one of the pins that run along the edge of the board. Instead, it is
-wired up to control the LED built into the Raspberry Pi PICO.
+wired up to control the LED built into the Raspberry Pi Pico.
 
 ## The digitalio Module
 

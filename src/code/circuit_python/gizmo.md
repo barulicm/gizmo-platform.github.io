@@ -6,16 +6,15 @@ and how to send text back to your computer to help debug your code.
 
 ## The print Function
 
-While your Circuit Python programs are running while your Gizmo is
-connected to a computer, they are able to send information back to your
-computer. The messages your Gizmo sends will show up in the "serial"
-viewer in the Mu editor. Your code sends these messages by calling the
-`print` function.
+When your Gizmo is connected to a computer, your CircuitPython programs
+are able to send information back to your computer. The messages your
+Gizmo sends will show up in the "serial" viewer in the Mu editor. Your
+code sends these messages by calling the `print` function.
 
 > [!NOTE]
 >
 > "Serial" is a generic term that refers to several different low-level
-communication protocols used in electronics. Often this refers to
+communication protocols used in electronics. Often this refers to a
 [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
 used to communicate between microcontrollers. For our purposes here, the
 USB connection is emulating a simple "serial" communication protocol.
@@ -43,6 +42,12 @@ print(f"The count is {count}.")
 # This will print "The count is 2."
 ```
 
+> [!NOTE]
+>
+> This syntax with 'f' in front of a string is called a "formatted string
+> literal" or f-string for short. You can find out more about f-strings
+> [here](https://docs.python.org/3/reference/lexical_analysis.html#formatted-string-literals).
+
 ## The circuitpython_gizmo Module
 
 The `circuitpython_gizmo` module gives access to the unique features of
@@ -66,7 +71,7 @@ Gizmo.
 - `gizmo.NEOPIXEL` - the Neopixel port
 - `gizmo.UART_TX` and `gizmo.UART_RX` - the transmit and receive pins for the UART port
 
-The `Gizmo` class can also be used to get the gamepad states.
+`Gizmo` can also be used to retrieve the gamepad states.
 
 There are six axes available:
 
@@ -112,13 +117,15 @@ First, import the Circuit Python Gizmo module.
 import circuitpython_gizmo
 ```
 
-Then, create a `Gizmo` object and a counter variable. We will use the
-`count` variable to keep track of how many times the button has been
-pressed.
+Then, create three variables:
+- `gizmo`: a `Gizmo` object and a counter variable
+- `count`: a number that will track how many times the button has been pressed
+- `previous_button_state`: a boolean (True/False) that will remember whether the button was pressed in the previous loop iteration
 
 ```Python
 gizmo = circuitpython_gizmo.Gizmo()
 count = 0
+previous_button_state = False
 ```
 
 Next, in a while loop, refresh the `Gizmo` object to get the latest
@@ -129,13 +136,20 @@ while True:
   gizmo.refresh()
 ```
 
-Still in the loop, check if the A button has been pressed. If it has, add
-1 to the count and print it.
+Still in the loop, check if the A button has been pressed. If it is
+pressed now and wasn't pressed last time, we know this is the start of a
+new press and the count should increas by 1.
 
 ```Python
-  if gizmo.buttons.a:
+  if gizmo.buttons.a and not previous_button_state:
     count += 1
     print(f"The button has been pressed {count} times.")
+```
+
+Finally, end the loop (outside of the `if`) by updating `previous_button_state`.
+
+```Python
+  previous_button_state = gizmo.buttons.a
 ```
 
 The complete program looks like this:
@@ -145,12 +159,14 @@ import circuitpython_gizmo
 
 gizmo = circuitpython_gizmo.Gizmo()
 count = 0
+previous_button_state = False
 
 while True:
   gizmo.refresh()
-  if gizmo.buttons.a:
+  if gizmo.buttons.a and not previous_button_state:
     count += 1
     print(f"The button has been pressed {count} times.")
+  previous_button_state = gizmo.buttons.a
 ```
 
 To run this program, make sure your Gizmo battery is plugged in and the

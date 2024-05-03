@@ -17,12 +17,16 @@ For this program, we're going to use two new modules: `pwmio` and
 PWM is a simple way to send an analog signal over a digital pin. It is
 commonly used for controlling motors, servos, and other actuators. The
 `pwmio` module provides the `PWMOut` class to efficiently generate PWM
-signals on a pin using our microcontroller's built-in timers. There are
-two important values for us to control with a `PWMOut` object: frequency
-and duty cycle.
+signals on a pin using our microcontroller's built-in timers. A timer
+is a dedicated piece of hardware that accurately keeps track of time
+without the main processor having to think about it. Most microcontrollers
+use timers to get very accurate PWM signals while the main code can work
+on other tasks. There are two important values for us to control with a
+`PWMOut` object: frequency and duty cycle.
 
 Frequency is the number of times each second that the signal changes from
-low to high and back to low. This is measured in Hertz (Hz).
+low to high and back to low. This is measured in Hertz (Hz). One Hertz
+means "once per second."
 
 Duty Cycle is the fraction of the total pulse time where the signal is
 held high. 0% duty cycle is a signal that is always low. 100% duty cycle
@@ -44,10 +48,13 @@ types of motors. We will use the `adafruit_motor.servo` module specifically.
 Why would we use a "servo" module for controlling our motors? In our case,
 it's because they use the same control interface. The Vex MC29 makes our
 DC gear motors behave like "continuous rotation servos" by using PWM to
-control them. You've probably seen the common three-wire connector used by
-the Vex MC29 and servos in your kit. The red and black wires provide power
-to the servo/motor and the white wire carries a PWM signal to control the
-servo / motor.
+control them. You have probably seen servo connectors like the ones
+on the Vex MC29 before. This is a standard style of connector that is very
+popular for remote control cars and planes. The red and black wires
+provide power to the servo / motor and the white wire carries a PWM signal
+to control the servo / motor. 
+
+![servo connector](/img/servo_connector.png)
 
 Servos control their position based on the signal they receive. We can
 control servos using the `Servo` class in `adafruit_motor.servo`. It has a
@@ -78,8 +85,8 @@ be just because we need to repeat some action a certain number of times,
 or to loop through the elements in a list of items, for example. In
 Python, we can do this with a `for` loop and the `range` function.
 
-A `for` loop, in Python, runs the body of its loop once for each element a
-container. If you give it a list of numbers like `[1, 2, 3, 4]`, the loop
+A `for` loop, in Python, runs the body of its loop once for each element in a
+container. If you give the list of numbers `[1, 2, 3, 4]`, the loop
 will run four times.
 
 ```Python
@@ -104,10 +111,13 @@ one of three ways:
 range(10)
 
 # Create a range with a start and stop value
+# The range includes the start value, but does NOT include the stop value
 # This range will hold the numbers 5 through 19
 range(5,20)
 
 # Create a range with start, stop, and step values
+# step controls the difference between values in the range
+# A step of 2 means each number will be the previous number plus 2
 # This range will hold even numbers from 0 through 98
 range(0, 100, 2)
 ```
@@ -139,7 +149,11 @@ For the setup portion of our code, we just need to setup a `Gizmo` object
 and an object to control the motor. To make sure we're creating the right
 kinds of signals for the Vex MC29 motor controller, we need to set the PWM
 frequency to 50 Hz, the min pulse width to 1000 milliseconds, and the max
-pulse width to 2000 milliseconds.
+pulse width to 2000 milliseconds. We're using 50 Hz because it is the most
+common frequency used for servo PWM signals, and we happen to know it's
+what the Vex MC29 uses. The min and max pulse widths came from the
+"Inputs" details on
+[the Vex MC29 product page](https://www.vexrobotics.com/276-2193.html#attr-vex_inputs).
 
 ```Python
 gizmo = circuitpython_gizmo.Gizmo()

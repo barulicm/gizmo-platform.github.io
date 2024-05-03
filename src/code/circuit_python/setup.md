@@ -9,9 +9,14 @@ editor and CircUp library management tools.
 In order for your microcontroller to be able to use Circuit Python, you
 have to install board-specific firmware.
 
-1. Download the Circuit Python runtime (.uf2 file) for the Raspberry Pi
-PICO from
-[https://circuitpython.org/board/raspberry_pi_pico/](https://circuitpython.org/board/raspberry_pi_pico/).
+1. Download the Circuit Python v9.0 runtime (.uf2 file) for the Raspberry Pi
+Pico from
+<https://circuitpython.org/board/raspberry_pi_pico/>.
+
+   > [!NOTE]
+   > 
+   > Only versions within 9.0.X (ie. 9.0.4) have been tested with the
+   > Gizmo. Newer or older versions may not work.
 
 1. Hold your Gizmo's student processor BOOTSEL ("Boot Select") button down
 while connecting the USB programming cable to your computer. Once you've
@@ -24,14 +29,21 @@ connected the cable, release the BOOTSEL button.
    Your device will automatically reboot and reconnect as a new drive
    called "CIRCUITPY".
 
-If your Gizmo ever gets stuck in a way that prevents you from saving new
-Circuit Python code to it or if it stops showing up as the CIRCUITPY drive
-when you connect it, you may need to re-install the runtime by following
-the above steps again.
+> [!WARNING]
+>
+> Each time you reinstall the CircuitPython runtime, any programs on your
+> Gizmo will be erased.
+
+> [!TIP]
+> 
+> If your Gizmo ever gets stuck in a way that prevents you from saving new
+> Circuit Python code to it or if it stops showing up as the CIRCUITPY
+> drive when you connect it, you may need to re-install the runtime by
+> following the above steps again.
 
 ## Installing the Mu Editor
 
-[Mu](https://codewith.mu/) is a simple Python editor that is the
+[Mu](https://codewith.mu/) is a simple Python editor and is the
 recommended editor for Circuit Python code.
 
 If you would like more information about using the Mu editor, including an
@@ -44,7 +56,7 @@ introduction to the user interface, checkout the
 1. When prompted for what mode to run Mu in, make sure to select Circuit
    Python.
 
-   ![Mu mode selection screenshot](https://cdn-learn.adafruit.com/assets/assets/000/105/681/medium640/circuitpython_WtCP_Mu_mode_dialogue.png?1634750676)
+   ![Mu mode selection screenshot](https://cdn-learn.adafruit.com/assets/assets/000/105/681/medium640/circuitpython_WtCP_Mu_mode_dialogue.png)
 
 1. Mu tries to automatically connect to Circuit Python devices attached to
    your computer. By default, when you save the code you're writing in Mu,
@@ -52,7 +64,7 @@ introduction to the user interface, checkout the
    one, it will show you this warning explaining where the code you write
    will be saved on your computer.
 
-   ![Mu device not found screenshot](https://cdn-learn.adafruit.com/assets/assets/000/105/679/medium640/circuitpython_WtCP_Mu_device_not_found.png?1634749722)
+   ![Mu device not found screenshot](https://cdn-learn.adafruit.com/assets/assets/000/105/679/medium640/circuitpython_WtCP_Mu_device_not_found.png)
 
 ## Installing the CircUp Library Manager
 
