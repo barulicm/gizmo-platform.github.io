@@ -13,15 +13,25 @@ and plug it into the computer.
 
 ## What is a module?
 
-When writing any kind of software, it is helpful to reuse code that other people have written. They've already put in the work to make sure it works correctly! A "library" is collection of helpful code that is shared between projects. In Python, every library is made up of one or more "modules." A module is a single file of Python code that defines useful objects or functions for other Python files to use.
+When writing any kind of software, it is helpful to reuse code that other
+people have written. They've already put in the work to make sure it works
+correctly! A "library" is collection of helpful code that is shared
+between projects. In Python, every library is made up of one or more
+"modules." A module is a single file of Python code that defines useful
+objects or functions for other Python files to use.
 
-In order to use the tools a module provides, we have to import it into our script. This is done with an "import statement". These are usually at the top of a Python script and look like this:
+In order to use the tools a module provides, we have to import it into our
+script. This is done with an "import statement". These are usually at the
+top of a Python script and look like this:
 
 ```Python
 import module_name
 ```
 
-You can learn more about the details of Python modules [here](https://docs.python.org/3/tutorial/modules.html). For now, the important thing to understand is that we use `import` to pull in useful code from another file.
+You can learn more about the details of Python modules
+[here](https://docs.python.org/3/tutorial/modules.html). For now, the
+important thing to understand is that we use `import` to pull in useful
+code from another file.
 
 ## The board Module
 
